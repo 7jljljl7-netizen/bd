@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Happy Birthday ❤️</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+	let text =
+	"Happy Birthday! 🎉\n\n" +
+	"Thank you for all the memories, laughs, and amazing moments together.\n\n" +
+	"I hope this year brings you happiness, success, good health and endless smiles ❤️";
+
+	let index = 0;
+
+	function openGift()
+	{
+		document.getElementById("start").style.display = "none";
+		document.getElementById("birthday").style.display = "flex";
+		typeMessage();
+		confetti();
+	}
+
+	function typeMessage()
+	{
+		if(index < text.length)
+		{
+			document.getElementById("message").innerHTML += text[index];
+			index++;
+			setTimeout(typeMessage,50);
+		}
+	}
+
+	function blow()
+	{
+		document.querySelector(".cake").innerHTML="🎂";
+		alert("Wish granted ❤️");
+		confetti();
+	}
+
+	function confetti()
+	{
+		for(let i=0;i<100;i++)
+		{
+			let c=document.createElement("div");
+			c.className="confetti";
+			c.style.left=Math.random()*100+"vw";
+			c.style.background=
+			"hsl("+Math.random()*360+",100%,50%)";
+			document.body.appendChild(c);
+			setTimeout(()=>{
+				c.remove();
+			},4000);
+		}
+	}
+</script>
+
+<body>
+	<section id="start">
+		<h1>
+			🎂 Surprise Birthday 🎂
+		</h1>
+		<p>
+			Someone prepared a special surprise for you...
+		</p>
+
+		<div class="gift" onclick="openGift()"></div>
+		<p>
+			Click the gift 🎁
+		</p>
+	</section>
+
+	<section id="birthday">
+		<h1>
+			Happy Birthday, 
+			<?php echo "Friend"; ?> ❤️
+		</h1>
+
+		<div class="card">
+			<p id="message"></p>
+		</div>
+
+		<h2>
+			Some Memories 📸
+		</h2>
+
+		<div class="memory">
+			<div class="photo">
+				<img src="images/photo1.jpg">
+				<p>
+					Memory 1
+				</p>
+			</div>
+
+			<div class="photo">
+				<img src="images/photo2.jpg">
+				<p>
+					Memory 2
+				</p>
+			</div>
+
+			<div class="photo">
+				<img src="images/photo3.jpg">
+				<p>
+					Memory 3
+				</p>
+			</div>
+		</div>
+		
+		<h2>
+			Make a wish 🎂
+		</h2>
+
+		<div class="cake">
+			🕯️🕯️🎂🕯️🕯️
+		</div>
+
+		<button onclick="blow()">
+			Blow Candles 💨
+		</button>
+	</section>
+</body>
+
+</html>
